@@ -1,11 +1,17 @@
 'use strict';
 
 require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
 
+// Express server
+const express = require('express');
 const app = express();
+
+// Cors for cross origin allowance
+const cors = require('cors');
 app.use(cors());
+
+// Mongoose
+const { mongoose } = require('./modules/db');
 
 const PORT = process.env.PORT || 3001;
 
