@@ -8,4 +8,6 @@ Books are life-changing. They have the power to enlighten, educate, entertain, h
 
 ## What is this?
 
-This is the backend for the can-of-books frontend!
+This is the backend for the can-of-books backend!
+
+* We can now connect to AtlasDB (MongoDB Cloud).

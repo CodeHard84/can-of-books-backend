@@ -21,18 +21,30 @@ const books = [
         title: 'Star Wars: Ahsoka',
         description: 'The story of Ahsoka Tano after she leaves the Jedi Order and her journey in the galaxy.',
         status: 'available',
+    },
+    {
+        title: 'Boy Dad: The Legend of Greying Early.',
+        description: 'The story of Jace and his favorite role so far in life.',
+        status: 'available'
     }
 ];
 
 async function seedDatabase() {
     try {
-        await Book.create(books);
-        console.log('Data inserted');
+      const existingBooks = await Book.find();
+      const booksToInsert = books.filter(book => !existingBooks.some(existingBook => existingBook.title === book.title));
+  
+      if (booksToInsert.length > 0) {
+        await Book.create(booksToInsert);
+        console.log('New data inserted:', booksToInsert.length);
+      } else {
+        console.log('No new data to insert. Database already populated.');
+      }
     } catch (error) {
-        console.error('Error inserting data: ', error);
+      console.error('Error inserting data: ', error);
     } finally {
-        mongoose.connection.close();
+      mongoose.connection.close();
     }
-}
+  }
 
 seedDatabase();
