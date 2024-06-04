@@ -26,13 +26,20 @@ const books = [
 
 async function seedDatabase() {
     try {
-        await Book.create(books);
-        console.log('Data inserted');
+      const existingBooks = await Book.find();
+      const booksToInsert = books.filter(book => !existingBooks.some(existingBook => existingBook.title === book.title));
+  
+      if (booksToInsert.length > 0) {
+        await Book.create(booksToInsert);
+        console.log('New data inserted:', booksToInsert.length);
+      } else {
+        console.log('No new data to insert. Database already populated.');
+      }
     } catch (error) {
-        console.error('Error inserting data: ', error);
+      console.error('Error inserting data: ', error);
     } finally {
-        mongoose.connection.close();
+      mongoose.connection.close();
     }
-}
+  }
 
 seedDatabase();
