@@ -1,6 +1,11 @@
 // MongoDB Mongoose
+const dotenv = require('dotenv');
+dotenv.config({ path: '../.env' });
+
+// Access environment variables from process.env
+const dbcon = process.env.DATABASE_URL;
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/books');
+mongoose.connect(dbcon + '/books');
 
 exports.mongoose = mongoose;
 
