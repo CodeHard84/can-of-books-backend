@@ -22,4 +22,13 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.delete('/:id', async (req, res) => {
+  try {
+    const book = await Book.findByIdAndDelete(req.params.id);
+    res.json(book);
+  } catch (error) {
+    res.status(500).send('Error deleting book: ' + error);
+  }
+});
+
 module.exports = router;
