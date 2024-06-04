@@ -22,4 +22,8 @@ app.get('/books', async (req, res) => {
   }
 });
 
+app.post('/books', async (req, res) => {
+  res.send('post request received');
+});
+
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
