@@ -5,7 +5,6 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 app.use(cors());
-const Book = require('./modules/book');
 const bookRoutes = require('./modules/bookRoutes');
 
 const PORT = process.env.PORT || 3001;
