@@ -21,6 +21,11 @@ const books = [
         title: 'Star Wars: Ahsoka',
         description: 'The story of Ahsoka Tano after she leaves the Jedi Order and her journey in the galaxy.',
         status: 'available',
+    },
+    {
+        title: 'Boy Dad: The Legend of Greying Early.',
+        description: 'The story of Jace and his favorite role so far in life.',
+        status: 'available'
     }
 ];
 
