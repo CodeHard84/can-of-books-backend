@@ -6,24 +6,10 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 const Book = require('./modules/book');
+const bookRoutes = require('./modules/bookRoutes');
 
 const PORT = process.env.PORT || 3001;
 
-app.get('/test', (req, res) => {
-  res.send('test request received')
-});
-
-app.get('/books', async (req, res) => { 
-  try {
-    const books = await Book.find();
-    res.json(books);
-  } catch (error) {
-    res.status(500).send('Error retrieving books: ' + error);
-  }
-});
-
-app.post('/books', async (req, res) => {
-  res.send('post request received');
-});
+app.use('/books', bookRoutes);
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
