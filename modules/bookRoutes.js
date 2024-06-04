@@ -13,7 +13,13 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  res.send('post request received');
+  try {
+    const book = new Book(req.body);
+    await book.save();
+    res.json(book);
+  } catch (error) {
+    res.status(500).send('Error creating book: ' + error);
+  }
 });
 
 module.exports = router;
