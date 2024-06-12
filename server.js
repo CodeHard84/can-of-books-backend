@@ -12,8 +12,8 @@ const PORT = process.env.PORT || 3001;
 
 app.use('/books', bookRoutes);
 
-app.get('/', (req, res) => {
-  res.send('Try /books, or not, I don\'t like reading either.');
+app.get('*', (req, res) => {
+  res.status(404).send('Try /books, or not, I don\'t like reading either.');
 });
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
