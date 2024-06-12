@@ -16,6 +16,11 @@ const bookSchema = new mongoose.Schema({
     required: true,
     enum: ['available', 'checked out', 'reserved'],
   },
+  user: {
+    type: String,
+    required: true,
+    trim: true,
+  },
 });
 
 const Book = mongoose.model('Book', bookSchema);
